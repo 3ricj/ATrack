@@ -163,14 +163,14 @@ begin
   s := 'PID';
   Main_Form.PIDTrackingCorrection_CheckBox.checked := ConfigIni.ReadBool(s,'PID Tracking Correction', False);
   Main_Form.PIDFiltering_CheckBox.checked := ConfigIni.ReadBool(s,'PID Filtering', False);
-  Main_Form.KpRA_MaskEdit.Text := ConfigIni.ReadString(s,'Kp RA','0.00000');
-  Main_Form.KpDEC_MaskEdit.Text := ConfigIni.ReadString(s,'Kp DEC','0.00000');
-  Main_Form.KiRA_MaskEdit.Text := ConfigIni.ReadString(s,'Ki RA','0.00000');
-  Main_Form.KiDEC_MaskEdit.Text := ConfigIni.ReadString(s,'Ki DEC','0.00000');
-  Main_Form.KdRA_MaskEdit.Text := ConfigIni.ReadString(s,'Kd RA','0.00000');
-  Main_Form.KdDEC_MaskEdit.Text := ConfigIni.ReadString(s,'Kd DEC','0.00000');
-  Main_Form.nFiltRA_MaskEdit.Text := ConfigIni.ReadString(s,'nFilt RA','0.00000');
-  Main_Form.nFiltDEC_MaskEdit.Text := ConfigIni.ReadString(s,'nFilt DEC','0.00000');
+  Main_Form.KpRA_MaskEdit.Text := ConfigIni.ReadString(s,'Kp RA','+0.00000');
+  Main_Form.KpDEC_MaskEdit.Text := ConfigIni.ReadString(s,'Kp DEC','+0.00000');
+  Main_Form.KiRA_MaskEdit.Text := ConfigIni.ReadString(s,'Ki RA','+0.00000');
+  Main_Form.KiDEC_MaskEdit.Text := ConfigIni.ReadString(s,'Ki DEC','+0.00000');
+  Main_Form.KdRA_MaskEdit.Text := ConfigIni.ReadString(s,'Kd RA','+0.00000');
+  Main_Form.KdDEC_MaskEdit.Text := ConfigIni.ReadString(s,'Kd DEC','+0.00000');
+  Main_Form.nFiltRA_MaskEdit.Text := ConfigIni.ReadString(s,'nFilt RA','+0.00000');
+  Main_Form.nFiltDEC_MaskEdit.Text := ConfigIni.ReadString(s,'nFilt DEC','+0.00000');
 
 // done
   ConfigIni.Free;

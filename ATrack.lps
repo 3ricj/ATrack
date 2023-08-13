@@ -48,9 +48,10 @@
       <Unit>
         <Filename Value="Config.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="276"/>
-        <CursorPos X="55" Y="298"/>
+        <TopLine Value="147"/>
+        <CursorPos X="76" Y="173"/>
         <UsageCount Value="67"/>
         <Loaded Value="True"/>
       </Unit>
@@ -119,9 +120,8 @@
         <Filename Value="pid.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="PID"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="75"/>
+        <TopLine Value="65"/>
         <CursorPos X="20" Y="167"/>
         <UsageCount Value="28"/>
         <Loaded Value="True"/>

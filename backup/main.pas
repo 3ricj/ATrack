@@ -290,7 +290,7 @@ type
     Panel7: TPanel;
     Panel8: TPanel;
     Panel9: TPanel;
-    PIDDerivitaveFiltering_CheckBox1: TCheckBox;
+    PIDFiltering_CheckBox: TCheckBox;
     Profile_Edit: TEdit;
     ProjectionType_ComboBox: TComboBox;
     RemoveHotPixels_CheckBox: TCheckBox;

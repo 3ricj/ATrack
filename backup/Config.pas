@@ -162,7 +162,7 @@ begin
 
   s := 'PID';
   Main_Form.PIDTrackingCorrection_CheckBox.checked := ConfigIni.ReadBool(s,'PID Tracking Correction', False);
-  Main_Form.PIDDerivativeFiltering_CheckBox.checked := ConfigIni.ReadBool(s,'PID Derivative Filtering', False);
+  Main_Form.PIDFiltering_CheckBox.checked := ConfigIni.ReadBool(s,'PID Filtering', False);
   Main_Form.KpRA_MaskEdit.Text := ConfigIni.ReadString(s,'Kp RA','0.00000');
   Main_Form.KpDEC_MaskEdit.Text := ConfigIni.ReadString(s,'Kp DEC','0.00000');
   Main_Form.KiRA_MaskEdit.Text := ConfigIni.ReadString(s,'Ki RA','0.00000');
@@ -295,7 +295,7 @@ begin
 
   s := 'PID';
   ConfigIni.WriteBool(s,'PID Tracking Correction', Main_Form.PIDTrackingCorrection_CheckBox.checked);
-  ConfigIni.WriteBool(s,'PID Derivative Filtering', Main_Form.PIDDerivativeFiltering_CheckBox.checked);
+  ConfigIni.WriteBool(s,'PID Filtering', Main_Form.PIDFiltering_CheckBox.checked);
   ConfigIni.WriteString(s,'Kp RA',Main_Form.KpRA_MaskEdit.EditText);
   ConfigIni.WriteString(s,'Kp DEC',Main_Form.KpDEC_MaskEdit.EditText);
   ConfigIni.WriteString(s,'Ki RA',Main_Form.KiRA_MaskEdit.EditText);

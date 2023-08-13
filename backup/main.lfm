@@ -1899,11 +1899,11 @@ object Main_Form: TMain_Form
           Font.Color = clLime
           Font.Height = -16
           Font.Name = 'Tahoma'
-          MaxLength = 7
+          MaxLength = 8
           ParentFont = False
           TabOrder = 0
-          EditMask = '9.99999;1;0'
-          Text = ' .     '
+          EditMask = '#9.99999;1;0'
+          Text = '  .     '
           SpaceChar = '0'
         end
         object KpDEC_MaskEdit: TMaskEdit
@@ -1917,11 +1917,11 @@ object Main_Form: TMain_Form
           Font.Color = clLime
           Font.Height = -16
           Font.Name = 'Tahoma'
-          MaxLength = 7
+          MaxLength = 8
           ParentFont = False
           TabOrder = 1
-          EditMask = '9.99999;1;0'
-          Text = ' .     '
+          EditMask = '#9.99999;1;0'
+          Text = '  .     '
           SpaceChar = '0'
         end
         object Label22: TLabel
@@ -1959,11 +1959,11 @@ object Main_Form: TMain_Form
           Font.Color = clLime
           Font.Height = -16
           Font.Name = 'Tahoma'
-          MaxLength = 7
+          MaxLength = 8
           ParentFont = False
           TabOrder = 2
-          EditMask = '9.99999;1;0'
-          Text = ' .     '
+          EditMask = '#9.99999;1;0'
+          Text = '  .     '
           SpaceChar = '0'
         end
         object KiDEC_MaskEdit: TMaskEdit
@@ -1977,11 +1977,11 @@ object Main_Form: TMain_Form
           Font.Color = clLime
           Font.Height = -16
           Font.Name = 'Tahoma'
-          MaxLength = 7
+          MaxLength = 8
           ParentFont = False
           TabOrder = 3
-          EditMask = '9.99999;1;0'
-          Text = ' .     '
+          EditMask = '#9.99999;1;0'
+          Text = '  .     '
           SpaceChar = '0'
         end
         object Label25: TLabel
@@ -2031,11 +2031,11 @@ object Main_Form: TMain_Form
           Font.Color = clLime
           Font.Height = -16
           Font.Name = 'Tahoma'
-          MaxLength = 7
+          MaxLength = 8
           ParentFont = False
           TabOrder = 4
-          EditMask = '9.99999;1;0'
-          Text = ' .     '
+          EditMask = '#9.99999;1;0'
+          Text = '  .     '
           SpaceChar = '0'
         end
         object KdDEC_MaskEdit: TMaskEdit
@@ -2049,11 +2049,11 @@ object Main_Form: TMain_Form
           Font.Color = clLime
           Font.Height = -16
           Font.Name = 'Tahoma'
-          MaxLength = 7
+          MaxLength = 8
           ParentFont = False
           TabOrder = 5
-          EditMask = '9.99999;1;0'
-          Text = ' .     '
+          EditMask = '#9.99999;1;0'
+          Text = '  .     '
           SpaceChar = '0'
         end
         object Label40: TLabel
@@ -2091,7 +2091,7 @@ object Main_Form: TMain_Form
           ParentColor = False
           ParentFont = False
         end
-        object PIDDerivitaveFiltering_CheckBox1: TCheckBox
+        object PIDFiltering_CheckBox: TCheckBox
           Left = 72
           Height = 19
           Top = 80
@@ -2353,11 +2353,11 @@ object Main_Form: TMain_Form
           Font.Color = clLime
           Font.Height = -16
           Font.Name = 'Tahoma'
-          MaxLength = 7
+          MaxLength = 8
           ParentFont = False
           TabOrder = 12
-          EditMask = '9.99999;1;0'
-          Text = ' .     '
+          EditMask = '#9.99999;1;0'
+          Text = '  .     '
           SpaceChar = '0'
         end
         object nFiltRA_MaskEdit: TMaskEdit
@@ -2371,11 +2371,11 @@ object Main_Form: TMain_Form
           Font.Color = clLime
           Font.Height = -16
           Font.Name = 'Tahoma'
-          MaxLength = 7
+          MaxLength = 8
           ParentFont = False
           TabOrder = 13
-          EditMask = '9.99999;1;0'
-          Text = ' .     '
+          EditMask = '#9.99999;1;0'
+          Text = '  .     '
           SpaceChar = '0'
         end
       end
