@@ -1,7 +1,7 @@
 object Main_Form: TMain_Form
-  Left = 2079
+  Left = 2174
   Height = 844
-  Top = 242
+  Top = 237
   Width = 1394
   Caption = 'ATrack'
   ClientHeight = 844
@@ -50,9 +50,9 @@ object Main_Form: TMain_Form
     Height = 844
     Top = 0
     Width = 1394
-    ActivePage = TabSheet1
+    ActivePage = TabSheet6
     Align = alClient
-    TabIndex = 4
+    TabIndex = 2
     TabOrder = 0
     object TabSheet2: TTabSheet
       Caption = 'Adaptive Tracking'
@@ -1834,6 +1834,549 @@ object Main_Form: TMain_Form
           TitleFont.Color = clBlack
           TitleFont.Height = -13
           TitleFont.Name = 'Tahoma'
+        end
+      end
+    end
+    object TabSheet6: TTabSheet
+      Caption = 'PID'
+      ClientHeight = 816
+      ClientWidth = 1386
+      object Panel10: TPanel
+        Left = 0
+        Height = 816
+        Top = 0
+        Width = 1386
+        Align = alClient
+        ClientHeight = 816
+        ClientWidth = 1386
+        Color = 4473924
+        ParentColor = False
+        TabOrder = 0
+        object Label15: TLabel
+          Left = 72
+          Height = 19
+          Top = 130
+          Width = 18
+          Caption = 'Kp'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label17: TLabel
+          Left = 72
+          Height = 19
+          Top = 169
+          Width = 21
+          Caption = 'RA'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label19: TLabel
+          Left = 72
+          Height = 19
+          Top = 210
+          Width = 30
+          Caption = 'DEC'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object KpRA_MaskEdit: TMaskEdit
+          Left = 120
+          Height = 24
+          Top = 166
+          Width = 104
+          Alignment = taCenter
+          AutoSize = False
+          Color = clBlack
+          Font.Color = clLime
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          MaxLength = 7
+          ParentFont = False
+          TabOrder = 0
+          EditMask = '9.99999;1;0'
+          Text = ' .     '
+          SpaceChar = '0'
+        end
+        object KpDEC_MaskEdit: TMaskEdit
+          Left = 120
+          Height = 24
+          Top = 207
+          Width = 104
+          Alignment = taCenter
+          AutoSize = False
+          Color = clBlack
+          Font.Color = clLime
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          MaxLength = 7
+          ParentFont = False
+          TabOrder = 1
+          EditMask = '9.99999;1;0'
+          Text = ' .     '
+          SpaceChar = '0'
+        end
+        object Label22: TLabel
+          Left = 304
+          Height = 19
+          Top = 130
+          Width = 13
+          Caption = 'Ki'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label24: TLabel
+          Left = 304
+          Height = 19
+          Top = 169
+          Width = 21
+          Caption = 'RA'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object KiRA_MaskEdit: TMaskEdit
+          Left = 352
+          Height = 24
+          Top = 166
+          Width = 104
+          Alignment = taCenter
+          AutoSize = False
+          Color = clBlack
+          Font.Color = clLime
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          MaxLength = 7
+          ParentFont = False
+          TabOrder = 2
+          EditMask = '9.99999;1;0'
+          Text = ' .     '
+          SpaceChar = '0'
+        end
+        object KiDEC_MaskEdit: TMaskEdit
+          Left = 352
+          Height = 24
+          Top = 207
+          Width = 104
+          Alignment = taCenter
+          AutoSize = False
+          Color = clBlack
+          Font.Color = clLime
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          MaxLength = 7
+          ParentFont = False
+          TabOrder = 3
+          EditMask = '9.99999;1;0'
+          Text = ' .     '
+          SpaceChar = '0'
+        end
+        object Label25: TLabel
+          Left = 304
+          Height = 19
+          Top = 210
+          Width = 30
+          Caption = 'DEC'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label29: TLabel
+          Left = 536
+          Height = 19
+          Top = 130
+          Width = 18
+          Caption = 'Kd'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label39: TLabel
+          Left = 536
+          Height = 19
+          Top = 167
+          Width = 21
+          Caption = 'RA'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object KdRA_MaskEdit: TMaskEdit
+          Left = 584
+          Height = 24
+          Top = 164
+          Width = 104
+          Alignment = taCenter
+          AutoSize = False
+          Color = clBlack
+          Font.Color = clLime
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          MaxLength = 7
+          ParentFont = False
+          TabOrder = 4
+          EditMask = '9.99999;1;0'
+          Text = ' .     '
+          SpaceChar = '0'
+        end
+        object KdDEC_MaskEdit: TMaskEdit
+          Left = 584
+          Height = 24
+          Top = 205
+          Width = 104
+          Alignment = taCenter
+          AutoSize = False
+          Color = clBlack
+          Font.Color = clLime
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          MaxLength = 7
+          ParentFont = False
+          TabOrder = 5
+          EditMask = '9.99999;1;0'
+          Text = ' .     '
+          SpaceChar = '0'
+        end
+        object Label40: TLabel
+          Left = 536
+          Height = 19
+          Top = 208
+          Width = 30
+          Caption = 'DEC'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object PIDTrackingCorrection_CheckBox: TCheckBox
+          Left = 72
+          Height = 19
+          Top = 40
+          Width = 20
+          Color = 4473924
+          Font.Color = 4473924
+          ParentColor = False
+          ParentFont = False
+          TabOrder = 6
+        end
+        object Label115: TLabel
+          Left = 96
+          Height = 19
+          Top = 40
+          Width = 170
+          Caption = 'PID Tracking Correction'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object PIDFiltering_CheckBox: TCheckBox
+          Left = 72
+          Height = 19
+          Top = 80
+          Width = 20
+          Color = 4473924
+          Font.Color = 4473924
+          ParentColor = False
+          ParentFont = False
+          TabOrder = 7
+        end
+        object Label116: TLabel
+          Left = 96
+          Height = 19
+          Top = 80
+          Width = 129
+          Caption = 'Derivative filtering'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label120: TLabel
+          Left = 73
+          Height = 19
+          Top = 272
+          Width = 80
+          Caption = 'Corrections'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label127: TLabel
+          Left = 72
+          Height = 19
+          Top = 306
+          Width = 26
+          Caption = 'PID'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label128: TLabel
+          Left = 159
+          Height = 19
+          Top = 306
+          Width = 21
+          Caption = 'RA'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object PIDRACorrection_Edit: TEdit
+          Left = 220
+          Height = 27
+          Top = 302
+          Width = 86
+          Alignment = taCenter
+          Color = clBlack
+          Font.Color = clRed
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 8
+          Text = '-0.00000'
+        end
+        object Label121: TLabel
+          Left = 325
+          Height = 19
+          Top = 306
+          Width = 77
+          Caption = 'arc-sec/sec'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label129: TLabel
+          Left = 153
+          Height = 19
+          Top = 345
+          Width = 30
+          Caption = 'DEC'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object PIDDECCorrection_Edit: TEdit
+          Left = 220
+          Height = 27
+          Top = 342
+          Width = 86
+          Alignment = taCenter
+          Color = clBlack
+          Font.Color = clRed
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 9
+          Text = '-0.00000'
+        end
+        object Label122: TLabel
+          Left = 323
+          Height = 19
+          Top = 345
+          Width = 77
+          Caption = 'arc-sec/sec'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label132: TLabel
+          Left = 73
+          Height = 19
+          Top = 392
+          Width = 52
+          Caption = 'Filtered'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label135: TLabel
+          Left = 160
+          Height = 19
+          Top = 392
+          Width = 21
+          Caption = 'RA'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object PIDRAFilteredCorrection_Edit: TEdit
+          Left = 221
+          Height = 27
+          Top = 389
+          Width = 86
+          Alignment = taCenter
+          Color = clBlack
+          Font.Color = clRed
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 10
+          Text = '-0.00000'
+        end
+        object Label163: TLabel
+          Left = 325
+          Height = 19
+          Top = 393
+          Width = 77
+          Caption = 'arc-sec/sec'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label137: TLabel
+          Left = 153
+          Height = 19
+          Top = 432
+          Width = 30
+          Caption = 'DEC'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object PIDDECFilteredCorrection_Edit: TEdit
+          Left = 221
+          Height = 27
+          Top = 429
+          Width = 86
+          Alignment = taCenter
+          Color = clBlack
+          Font.Color = clRed
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 11
+          Text = '-0.00000'
+        end
+        object Label153: TLabel
+          Left = 323
+          Height = 19
+          Top = 432
+          Width = 77
+          Caption = 'arc-sec/sec'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label55: TLabel
+          Left = 768
+          Height = 19
+          Top = 130
+          Width = 30
+          Caption = 'nFilt'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label139: TLabel
+          Left = 768
+          Height = 19
+          Top = 169
+          Width = 21
+          Caption = 'RA'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label140: TLabel
+          Left = 768
+          Height = 19
+          Top = 210
+          Width = 30
+          Caption = 'DEC'
+          Font.Color = clYellow
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          ParentColor = False
+          ParentFont = False
+        end
+        object nFiltDEC_MaskEdit: TMaskEdit
+          Left = 816
+          Height = 24
+          Top = 207
+          Width = 104
+          Alignment = taCenter
+          AutoSize = False
+          Color = clBlack
+          Font.Color = clLime
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          MaxLength = 7
+          ParentFont = False
+          TabOrder = 12
+          EditMask = '9.99999;1;0'
+          Text = ' .     '
+          SpaceChar = '0'
+        end
+        object nFiltRA_MaskEdit: TMaskEdit
+          Left = 816
+          Height = 24
+          Top = 166
+          Width = 104
+          Alignment = taCenter
+          AutoSize = False
+          Color = clBlack
+          Font.Color = clLime
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          MaxLength = 7
+          ParentFont = False
+          TabOrder = 13
+          EditMask = '9.99999;1;0'
+          Text = ' .     '
+          SpaceChar = '0'
         end
       end
     end
@@ -4430,60 +4973,24 @@ object Main_Form: TMain_Form
       end
     end
   end
-  object Label157: TLabel
-    Left = 280
-    Height = 19
-    Top = 157
-    Width = 77
-    Caption = 'arc-sec/sec'
-    Font.Color = clYellow
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    ParentColor = False
-    ParentFont = False
-  end
-  object Label158: TLabel
-    Left = 100
-    Height = 19
-    Top = 194
-    Width = 30
-    Caption = 'DEC'
-    Font.Color = clYellow
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    ParentColor = False
-    ParentFont = False
-  end
-  object Label165: TLabel
-    Left = 107
-    Height = 19
-    Top = 150
-    Width = 21
-    Caption = 'RA'
-    Font.Color = clYellow
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    ParentColor = False
-    ParentFont = False
-  end
-  object Label166: TLabel
-    Left = 19
-    Height = 19
-    Top = 105
-    Width = 146
-    Caption = 'Drive Tracking Rates'
-    Font.Color = clYellow
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    ParentColor = False
-    ParentFont = False
-  end
   object Label167: TLabel
     Left = 101
     Height = 19
     Top = 30
     Width = 22
     Caption = 'HA'
+    Font.Color = clYellow
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label16: TLabel
+    Left = 100
+    Height = 19
+    Top = 123
+    Width = 21
+    Caption = 'RA'
     Font.Color = clYellow
     Font.Height = -16
     Font.Name = 'Tahoma'

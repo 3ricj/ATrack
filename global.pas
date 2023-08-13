@@ -151,10 +151,14 @@ const
 
     sideOfPier: integer;   // from ASCOM, used to watch for pier flip
 
+    thirdRAImageDrift, previousRAImageDrift: double;
+    thirdDECImageDrift, previousDECImageDrift: double;
+    prevousNsec: double;
+
 
 implementation
 
-uses Main, Pinpoint;
+uses Main, Pinpoint, PID;
 
 FUNCTION GSTIME(JDUT1: EXTENDED ): EXTENDED; forward;
 FUNCTION MODFUNC(XVal,Modby: EXTENDED ) : EXTENDED; forward;
@@ -625,6 +629,15 @@ begin
     exit;
   end;
 
+// prepare PID
+  thirdRAImageDrift := previousRAImageDrift;
+  previousRAImageDrift := RAp.ImageDrift;
+
+  thirdDECImageDrift := previousDECImageDrift;
+  previousDECImageDrift := DECp.ImageDrift;
+
+  prevousNsec := nSec;
+
 // update counter
   inc(nImagesUsed);
 
@@ -649,7 +662,7 @@ begin
   end;
 
 // time since previous image (adjust time to midpoint of the image)
-  dt := (newImage.UTCDateTime + (newImage.ExposureInterval/2.0)) - (prevImage.UTCDateTime+(newImage.ExposureInterval/2.0));
+  dt := (newImage.UTCDateTime + (newImage.ExposureInterval/2.0)) - (prevImage.UTCDateTime+(prevImage.ExposureInterval/2.0));
   nSec := dt * 86400.0;
 
 

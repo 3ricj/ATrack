@@ -25,7 +25,7 @@ var
 
 implementation
 
-uses Main, Centering, Drift, Mount, Profiles;
+uses Main, Centering, Drift, Mount, Profiles, PID;
 
 procedure ResetSessionVariables; forward;
 procedure AddToGrid(s: string); forward;
@@ -360,8 +360,26 @@ begin
   if not newImage.solved then goto done1;
 
 // pass to subsystems
-  Centering_NewImage;
-  Drift_NewImage;
+  if Main_Form.PIDTrackingCorrection_CheckBox.checked then
+  begin
+    PID_NewImage;
+    if Main_Form.PIDFiltering_CheckBox.checked then
+    begin
+      RAp.drift := RA_new_rate_Dfilt;
+      DECp.drift := DEC_new_rate_Dfilt;
+    end
+    else
+    begin
+      RAp.drift := RA_new_rate;
+      DECp.drift := DEC_new_rate;
+    end;
+  end
+  else
+  begin
+    Centering_NewImage;
+    Drift_NewImage;
+
+  end;
 
 // update mount
   Run_UpdateTrackingRates;
@@ -401,6 +419,7 @@ begin
   Drift_Reset;
   Drift_Reset2;
   Centering_Reset;
+  PID_Reset;
   Run_UpdateTrackingRates;
 
   Main_Log('PIER FLIP');
@@ -683,6 +702,13 @@ begin
   else
     Main_Form.CenteringDEC_Edit.Font.color := clRed;
   Main_Form.CenteringDECTimer_Edit.text := IntToStr(DECp.centTime);
+
+// PID
+  Main_Form.PIDRACorrection_Edit.text := formatfloat('0.00000',RA_new_rate);
+  Main_Form.PIDDECCorrection_Edit.text := formatfloat('0.00000',DEC_new_rate);
+
+  Main_Form.PIDRAFilteredCorrection_Edit.text := formatfloat('0.00000',RA_new_rate_Dfilt);
+  Main_Form.PIDDECFilteredCorrection_Edit.text := formatfloat('0.00000',DEC_new_rate_Dfilt);
 
 end;
 

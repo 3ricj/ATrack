@@ -18,9 +18,16 @@ type
     ATStatus_Label: TLabel;
     BackgroundTileSize_MaskEdit: TMaskEdit;
     BaseDEC_Edit: TEdit;
+    nFiltDEC_MaskEdit: TMaskEdit;
+    nFiltRA_MaskEdit: TMaskEdit;
+    Label139: TLabel;
+    Label140: TLabel;
+    Label55: TLabel;
+    PIDDECCorrection_Edit: TEdit;
     BaseDriveTrackingRatesRESET_BCButton: TBCButton;
     BaseDriveTrackingRatesSET_BCButton: TBCButton;
     BaseRA_Edit: TEdit;
+    PIDRACorrection_Edit: TEdit;
     BaseTrackingRateDEC_MaskEdit: TMaskEdit;
     BaseTrackingRateRA_MaskEdit: TMaskEdit;
     Base_DEC_CheckBox: TCheckBox;
@@ -45,7 +52,28 @@ type
     ConvolveGaussian_CheckBox: TCheckBox;
     ConvolveLog_CheckBox: TCheckBox;
     CorrectionLimitDEC_MaskEdit: TMaskEdit;
+    PIDDECFilteredCorrection_Edit: TEdit;
+    PIDRAFilteredCorrection_Edit: TEdit;
+    Label116: TLabel;
+    Label120: TLabel;
+    Label121: TLabel;
+    Label122: TLabel;
+    Label127: TLabel;
+    Label128: TLabel;
+    Label129: TLabel;
+    Label132: TLabel;
+    Label135: TLabel;
+    Label137: TLabel;
+    Label153: TLabel;
+    Label163: TLabel;
+    PIDTrackingCorrection_CheckBox: TCheckBox;
+    KpDEC_MaskEdit: TMaskEdit;
+    KiDEC_MaskEdit: TMaskEdit;
+    KdDEC_MaskEdit: TMaskEdit;
     CorrectionLimitRA_MaskEdit: TMaskEdit;
+    KpRA_MaskEdit: TMaskEdit;
+    KiRA_MaskEdit: TMaskEdit;
+    KdRA_MaskEdit: TMaskEdit;
     delayCounter_Edit: TEdit;
     DriftCorrectionDEC_Edit: TEdit;
     DriftCorrectionRateLimitDEC_MaskEdit: TMaskEdit;
@@ -97,6 +125,7 @@ type
     Label112: TLabel;
     Label113: TLabel;
     Label114: TLabel;
+    Label115: TLabel;
     Label117: TLabel;
     Label118: TLabel;
     Label119: TLabel;
@@ -114,30 +143,34 @@ type
     Label138: TLabel;
     Label14: TLabel;
     Label144: TLabel;
+    Label15: TLabel;
     Label150: TLabel;
     Label151: TLabel;
     Label152: TLabel;
     Label156: TLabel;
-    Label157: TLabel;
-    Label158: TLabel;
     Label159: TLabel;
+    Label16: TLabel;
     Label160: TLabel;
     Label161: TLabel;
     Label162: TLabel;
     DirMonitorWait_Timer: TTimer;
     CenteringDEC_Timer: TTimer;
     Label111: TLabel;
-    Label165: TLabel;
-    Label166: TLabel;
     Label167: TLabel;
+    Label17: TLabel;
     Label18: TLabel;
+    Label19: TLabel;
     Label2: TLabel;
     Label20: TLabel;
     Label21: TLabel;
+    Label22: TLabel;
     Label23: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
     Label26: TLabel;
     Label27: TLabel;
     Label28: TLabel;
+    Label29: TLabel;
     Label3: TLabel;
     Label30: TLabel;
     Label31: TLabel;
@@ -148,7 +181,9 @@ type
     Label36: TLabel;
     Label37: TLabel;
     Label38: TLabel;
+    Label39: TLabel;
     Label4: TLabel;
+    Label40: TLabel;
     Label41: TLabel;
     Label42: TLabel;
     Label43: TLabel;
@@ -246,6 +281,7 @@ type
     OuterAperture_MaskEdit: TMaskEdit;
     PageControl1: TPageControl;
     Panel1: TPanel;
+    Panel10: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
@@ -254,6 +290,7 @@ type
     Panel7: TPanel;
     Panel8: TPanel;
     Panel9: TPanel;
+    PIDFiltering_CheckBox: TCheckBox;
     Profile_Edit: TEdit;
     ProjectionType_ComboBox: TComboBox;
     RemoveHotPixels_CheckBox: TCheckBox;
@@ -273,6 +310,7 @@ type
     TabSheet3: TTabSheet;
     TabSheet4: TTabSheet;
     TabSheet5: TTabSheet;
+    TabSheet6: TTabSheet;
     TelescopeDriver_Edit: TEdit;
     UseFaintStars_CheckBox: TCheckBox;
     UsePinPoint_CheckBox: TCheckBox;
@@ -324,7 +362,7 @@ procedure Main_StopDirectoryWatch;
 implementation
 
 {$R *.lfm}
-uses Config, Run, Centering, Drift, Ascom,
+uses Config, Run, Centering, Drift, Ascom, PID,
      Pinpoint, Profiles, Global, Mount, Network;
 
 var
@@ -355,6 +393,7 @@ begin
 // Subsystems
   Profiles_Init;
   Run_Open;
+  PID_Init;
   Drift_Init;
   Centering_Init;
   PinPoint_Open;

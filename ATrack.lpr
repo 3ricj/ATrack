@@ -11,7 +11,7 @@ uses
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, Main, Ascom, Centering, Config, Drift, Global, Mount, Pinpoint,
-  Profiles, Run, Network, indylaz;
+  Profiles, Run, Network, indylaz, PID;
 
 {$R *.res}
 

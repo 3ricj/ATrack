@@ -99,6 +99,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Network"/>
       </Unit>
+      <Unit>
+        <Filename Value="pid.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PID"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

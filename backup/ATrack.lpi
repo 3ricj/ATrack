@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="12"/>
+    <PathDelim Value="\"/>
+    <General>
+      <SessionStorage Value="InProjectDir"/>
+      <Title Value="ATrack"/>
+      <Scaled Value="True"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <XPManifest>
+        <DpiAware Value="True"/>
+      </XPManifest>
+      <Icon Value="0"/>
+    </General>
+    <BuildModes>
+      <Item Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+    <RunParams>
+      <FormatVersion Value="2"/>
+    </RunParams>
+    <RequiredPackages>
+      <Item>
+        <PackageName Value="indylaz"/>
+      </Item>
+      <Item>
+        <PackageName Value="weblaz"/>
+      </Item>
+      <Item>
+        <PackageName Value="bgracontrols"/>
+      </Item>
+      <Item>
+        <PackageName Value="LCL"/>
+      </Item>
+    </RequiredPackages>
+    <Units>
+      <Unit>
+        <Filename Value="ATrack.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Main_Form"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Main"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ascom.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Ascom"/>
+      </Unit>
+      <Unit>
+        <Filename Value="centering.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Centering"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Config.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="drift.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Drift"/>
+      </Unit>
+      <Unit>
+        <Filename Value="global.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Global"/>
+      </Unit>
+      <Unit>
+        <Filename Value="mount.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Mount"/>
+      </Unit>
+      <Unit>
+        <Filename Value="pinpoint.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Pinpoint"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Profiles.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="run.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Run"/>
+      </Unit>
+      <Unit>
+        <Filename Value="network.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Network"/>
+      </Unit>
+      <Unit>
+        <Filename Value="pid.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PID"/>
+      </Unit>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="ATrack"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="."/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf2Set"/>
+      </Debugging>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions>
+      <Item>
+        <Name Value="EAbort"/>
+      </Item>
+      <Item>
+        <Name Value="ECodetoolError"/>
+      </Item>
+      <Item>
+        <Name Value="EFOpenError"/>
+      </Item>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

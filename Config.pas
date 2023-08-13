@@ -160,6 +160,18 @@ begin
   Main_Form.CenterOnTargetRA_MaskEdit.Text := ConfigIni.ReadString(s,'Target RA','00 00 00.00');
   Main_Form.CenterOnTargetDEC_MaskEdit.Text := ConfigIni.ReadString(s,'Target DEC','+00 00 00.0');
 
+  s := 'PID';
+  Main_Form.PIDTrackingCorrection_CheckBox.checked := ConfigIni.ReadBool(s,'PID Tracking Correction', False);
+  Main_Form.PIDFiltering_CheckBox.checked := ConfigIni.ReadBool(s,'PID Filtering', False);
+  Main_Form.KpRA_MaskEdit.Text := ConfigIni.ReadString(s,'Kp RA','0.00000');
+  Main_Form.KpDEC_MaskEdit.Text := ConfigIni.ReadString(s,'Kp DEC','0.00000');
+  Main_Form.KiRA_MaskEdit.Text := ConfigIni.ReadString(s,'Ki RA','0.00000');
+  Main_Form.KiDEC_MaskEdit.Text := ConfigIni.ReadString(s,'Ki DEC','0.00000');
+  Main_Form.KdRA_MaskEdit.Text := ConfigIni.ReadString(s,'Kd RA','0.00000');
+  Main_Form.KdDEC_MaskEdit.Text := ConfigIni.ReadString(s,'Kd DEC','0.00000');
+  Main_Form.nFiltRA_MaskEdit.Text := ConfigIni.ReadString(s,'nFilt RA','0.00000');
+  Main_Form.nFiltDEC_MaskEdit.Text := ConfigIni.ReadString(s,'nFilt DEC','0.00000');
+
 // done
   ConfigIni.Free;
 
@@ -280,6 +292,18 @@ begin
   ConfigIni.WriteBool(s,'Center On Target',Main_Form.CenterOnTarget_CheckBox.Checked);
   ConfigIni.WriteString(s,'Target RA',Main_Form.CenterOnTargetRA_MaskEdit.EditText);
   ConfigIni.WriteString(s,'Target DEC',Main_Form.CenterOnTargetDEC_MaskEdit.EditText);
+
+  s := 'PID';
+  ConfigIni.WriteBool(s,'PID Tracking Correction', Main_Form.PIDTrackingCorrection_CheckBox.checked);
+  ConfigIni.WriteBool(s,'PID Filtering', Main_Form.PIDFiltering_CheckBox.checked);
+  ConfigIni.WriteString(s,'Kp RA',Main_Form.KpRA_MaskEdit.EditText);
+  ConfigIni.WriteString(s,'Kp DEC',Main_Form.KpDEC_MaskEdit.EditText);
+  ConfigIni.WriteString(s,'Ki RA',Main_Form.KiRA_MaskEdit.EditText);
+  ConfigIni.WriteString(s,'Ki DEC',Main_Form.KiDEC_MaskEdit.EditText);
+  ConfigIni.WriteString(s,'Kd RA',Main_Form.KdRA_MaskEdit.EditText);
+  ConfigIni.WriteString(s,'Kd DEC',Main_Form.KdDEC_MaskEdit.EditText);
+  ConfigIni.WriteString(s,'nFilt RA',Main_Form.nFiltRA_MaskEdit.EditText);
+  ConfigIni.WriteString(s,'nFilt DEC',Main_Form.nFiltDEC_MaskEdit.EditText);
 
 // done
   ConfigIni.Free;

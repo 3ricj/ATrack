@@ -1,0 +1,172 @@
+
+Here is psedo pascal code for the changes that I think need to be made.   Changes are highlighted in yellow.   Code not highlighted is current code that is for reference.
+
+3ric and I have been working on a C sharp test harness which is not a full app at the level of ATrack but we have enough working that it lets us test the PID loop with the real system.
+
+Based on that, here are the changes that I think need to be made to ATrack pascal source code, but I am not really a pascal programmer, and this is more of a sketch than working code. 
+
+Changes to global.pas
+-------------------------------
+We need to add a few more variables and initialize them to zero at the onset.
+
+  thirdRAImageDrift :=0;
+
+  previousRAImageDrift := 0;
+
+  thirdRAImageDrift :=0;
+
+  previousRAImageDrift := 0;
+
+  prevousNsec :=0;
+               
+
+BEFORE the plate solve we need to save some values for future use,  so add this code before the plate solve.
+
+  thirdRAImageDrift := prevousRAImageDrift;
+
+  previousRAImageDrift := RAp.ImageDrift;
+
+  thirdDECImageDrift := prevousDECImageDrift;
+
+  previousDECImageDrift := DECp.ImageDrift;
+
+  prevousNsec = Nsec;
+ 
+
+The basic idea here is that the most recent plate solve gives us RAp.ImageDrift,  the previous plate solve gave us previousRAImageDrift, and the one before that gave us thirdRAImageDrift.
+
+We also want to store the time durations  Nsec, between the most recent plate solve and the previous one, and previousNsec between the previous and the third most recent plate solve.
+
+After the plate solve, the code calculates some important parameters: RAp.ImageShift, DECp.ImageShift, which are the difference in arcsec between the most recent plate solve image and the reference image.  It also calculates RAp.ImageDrift, DECp.ImageDrift, which are the differences in arcsec between the most recent plate solve image and the reference image.
+
+You also calculate nSec as follows
+
+// time since previous image (adjust time to midpoint of the image)
+
+  dt := (newImage.UTCDateTime + (newImage.ExposureInterval/2.0)) - (prevImage.UTCDateTime+(newImage.ExposureInterval/2.0));
+
+  nSec := dt * 86400.0;
+
+
+As discussed in previous email, in cases where the exposure time varies this really should be
+
+  dt := (newImage.UTCDateTime + (newImage.ExposureInterval/2.0)) - (prevImage.UTCDateTime+(prevImage.ExposureInterval/2.0));
+
+  nSec := dt * 86400.0;
+
+ 
+
+User interface code
+--------------------------
+
+We need to be able to set several values from the UI:
+
+
+  RA_Kp                  the proportional gain in the PID controller for RA
+
+  RA_Ki                    integral gain for RA
+
+  RA_Kd                   derivative gain for RA
+
+  DEC_Kp                the proportional gain in the PID controller for DEC
+
+  DEC_Ki                  integral gain for DEC
+
+  DEC_Kd                 derivative gain for DEC
+
+  RA_nfilt                derivative filter parameter for derivative filtering for RA  - note nfilt > 0
+
+  DEC_nfilt              derivative filter parameter for derivative filtering for DEC – note nfilt >0
+
+  Check box            Use ordinary PID or use derivative filtered PID (see below)
+
+
+Somewhere the UI should display
+ 
+
+   RA_rate_              PID derived RA correction rate
+
+   DEC_rate              PID derived DEC correction rate
+ 
+
+   RA_rate_Dfilt_   PID with derivative filtering derived RA correction rate
+
+   DEC_rate_Dfilt   PID with derivative filtering derived DEC correction rate
+
+ 
+Since the loop calculation is so simple we might as well display what each algorithm would produce – that may help us see what is going better.
+
+ 
+
+PID loop
+-----------
+In whatever file you put the PID control loops we have
+
+Note that the standard PID loop needs to have at least 2 plate solves done, so we don’t want to execute the standard PID code until after the 2nd plate solve. That will make sure that we have values for previousRAImageDrift etc.
+
+   RA_new_rate :=  RA_Kp *RAp.ImageDrift/Nsec + RA_Ki*RAp.ImageShift + RA_Kd*(RAp.ImageDrift/Nsec – previousRAImageDrift/previousNsec)/Nsec;
+
+   DEC_new_rate :=  DEC_Kp *DECp.ImageDrift/Nsec + DEC_Ki*DECp.ImageShift + DEC_Kd*(DECp.ImageDrift – previousDECImageDrift/previousNsec)/Nsec;
+
+Note that the proportional term is ImageDrift/Nsec.  The integral term is ImageShift.  The derivative term is difference in ImageDrift/Nsec over the last time interval. 
+
+We need to initialize some variables for the derivative filtering.
+
+  RA_der0 := 0.0;
+
+  RA_der1 = 0.0;
+
+  DEC_der0:= 0.0;
+
+  DEC_der1:= 0.0;
+
+Note that the derivative filtered PID code should not run until at least the 3rd plate solve, because it needs non-zero values for previousRAImageDrift, and thirdRAImageDrift (and so forth for DEC).
+
+The derivative filtered PID loops are then
+
+  RA_tau = RA_Kd/( RA_Kp*RA_nfilt);
+
+  RA_alpha = Nsec/(2.0*RA_tau);
+
+  RA_der1 = RA_der0;
+
+  RA_der0 = RA_Kd*( (RAp.ImageDrift - previousRAImageDrift)/Nsec – (previousRAImageDrift - thirdRAImageDrift)/previousNsec);
+
+  RA_filtder = (RA_alpha/(RA_alpha + 1))*(RA_der0 + RA_der1) – ((RA_alpha – 1)/(RA_alpha +1))*RA_der1;
+
+  RA_new_rate_Dfilt :=  RA_Kp *RAp.ImageDriftlNsec + RA_Ki*RAp.ImageShift + RA_filtder;
+ 
+And
+
+  DEC_tau = DEC_Kd/( DEC_Kp*DEC_nfilt);
+
+  DEC_alpha = Nsec/(2.0*DEC_tau);
+
+  DEC_der1 = DEC_der0;
+
+  DEC_der0 = DEC_Kd*( (DECp.ImageDrift - previousDECImageDrift)/Nsec – (previousDECImageDrift - thirdDECImageDrift)/previousNsec);
+
+  DEC_filtder = (DEC_alpha/(DEC_alpha + 1))*(DEC_der0 + DEC_der1) – ((DEC_alpha – 1)/(DEC_alpha +1))*DEC_der1;
+
+  DEC_new_rate_Dfilt :=  DEC_Kp *DECp.ImageDrift/Nsec + DEC_Ki*DECp.ImageShift + DEC_filtder;
+
+As per the UI comment above we need to have a UI check box to choose either the normal PID output (i.e. RA_new_rate, DEC_new_rate)  or the derivative filter PID output (RA_new_rate_Dfilt, DEC_new_rate_Dfilt) to send to ASCOM V2 driver.  Also note that the RA rates have to be divided by 15.
+
+The ASCOM V2 driver in theory is written to use rates defined as SIDEREAL seconds, not ordinary UT seconds.  In the above Nsec is in UT seconds, so in principle we should multiply each rate by 0.9972695602
+
+I don’t think that is really necessary – the difference is very small, but thought I should mentioned.
+
+ 
+
+--------
+
+As I say above, this is psedo-code.   You can obviously use whatever naming conventions you want.  
+
+ 
+
+Let me know if you have any questions.
+
+ 
+
+Nathan
+
