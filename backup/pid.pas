@@ -53,19 +53,38 @@ end;
 //******************************************************************************
 procedure PID_Reset;
 begin
-  thirdRAImageDrift := 0;
-  previousRAImageDrift := 0;
-
-  thirdDECImageDrift := 0;
-  previousDECImageDrift := 0;
-
-  previousNsec := 0;
+  thirdRAImageDrift
+  thirdDECImageDrift: double;
+  previousRAImageDrift
+  previousDECImageDrift: double;
+  previousNsec: double;
 
   RA_der0 := 0.0;
-  RA_der1 := 0.0;
-
   DEC_der0 := 0.0;
+  RA_der1 := 0.0;
   DEC_der1 := 0.0;
+
+  RA_Kp := 0.0;
+  DEC_Kp := 0.0;
+  RA_Ki := 0.0;
+  DEC_Ki := 0.0;
+  RA_Kd := 0.0;
+  DEC_Kd := 0.0;
+  RA_nFilt := 0.0;
+  DEC_nFilt := 0.0;
+
+  RA_new_rate := 0.0;
+  DEC_new_rate := 0.0;
+
+  RA_tau := 0.0;
+  DEC_tau := 0.0;
+  RA_alpha := 0.0;
+  DEC_alpha := 0.0;
+
+  RA_filtder := 0.0;
+  DEC_filtder := 0.0;
+  RA_new_rate_Dfilt := 0.0;
+  DEC_new_rate_Dfilt := 0.0;
 
 end;
 
@@ -110,7 +129,10 @@ begin
   a := RA_Kp * (RAp.ImageDrift / nSec);
   b := RA_Ki * RAp.ImageShift;
   c := RAp.ImageDrift / nSec;
-  d := previousRAImageDrift / previousNsec;
+  if not(previousNsec = 0) then
+    d := previousRAImageDrift / previousNsec
+  else
+    d := 0.0;
   e := (c - d) / nSec;
   f := RA_Kd * e;
   RA_new_rate :=  a + b + f;
@@ -118,7 +140,10 @@ begin
   a := DEC_Kp * (DECp.ImageDrift / nSec);
   b := DEC_Ki * DECp.ImageShift;
   c := DECp.ImageDrift / nSec;
-  d := previousDECImageDrift / previousNsec;
+  if not(previousNsec = 0) then
+    d := previousDECImageDrift / previousNsec
+  else
+    d := 0.0;
   e := (c - d) / nSec;
   f := DEC_Kd * e;
   DEC_new_rate :=  a + b + f;
@@ -167,6 +192,44 @@ begin
   RA_new_rate_Dfilt :=  a + b + RA_filtder;
 
   // DEC
+  d := DEC_Kp * DEC_nfilt;
+  if not(d = 0.0) then
+    DEC_tau := DEC_Kd / d
+  else
+    DEC_tau := 0.0;
+
+  d := 2.0 * DEC_tau;
+  if not(d = 0.0) then
+    DEC_alpha := nSec / d
+  else
+    DEC_alpha := 0.0;
+
+  DEC_der1 := DEC_der0;
+  if not(previousNsec = 0.0) then
+  begin
+    a := (DECp.ImageDrift - previousDECImageDrift) / nSec;
+    b := (previousDECImageDrift - thirdDECImageDrift) / previousNsec;
+    c := a - b;
+    DEC_der0 := DEC_Kd * c;
+  end
+  else
+    DEC_der0 := 0.0;
+
+  d := DEC_alpha + 1;
+  if not(d = 0.0) then
+  begin
+    a := DEC_alpha / d;
+    b := DEC_der0 + DEC_der1;
+    c := (DEC_alpha - 1) / d;
+    e := c * DEC_der1;
+    DEC_filtder := (a * b) - e;
+  end
+  else
+    DEC_filtder := 0.0;
+
+  a := (DEC_Kp * DECp.ImageDrift) / nSec;
+  b := DEC_Ki * DECp.ImageShift;
+  DEC_new_rate_Dfilt :=  a + b + DEC_filtder;
 
 end;
 

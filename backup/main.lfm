@@ -50,9 +50,9 @@ object Main_Form: TMain_Form
     Height = 844
     Top = 0
     Width = 1394
-    ActivePage = TabSheet6
+    ActivePage = TabSheet1
     Align = alClient
-    TabIndex = 2
+    TabIndex = 5
     TabOrder = 0
     object TabSheet2: TTabSheet
       Caption = 'Adaptive Tracking'
