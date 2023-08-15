@@ -123,8 +123,8 @@
         <UnitName Value="PID"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="61"/>
-        <CursorPos X="29" Y="87"/>
+        <TopLine Value="45"/>
+        <CursorPos X="23" Y="60"/>
         <UsageCount Value="30"/>
         <Loaded Value="True"/>
       </Unit>
@@ -215,10 +215,6 @@
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="pinpoint.pas"/>
-        <Caret Line="181" TopLine="164"/>
-      </Position>
       <Position>
         <Filename Value="pinpoint.pas"/>
         <Caret Line="180" TopLine="164"/>
@@ -334,6 +330,10 @@
       <Position>
         <Filename Value="pid.pas"/>
         <Caret Line="119" TopLine="97"/>
+      </Position>
+      <Position>
+        <Filename Value="pid.pas"/>
+        <Caret Line="87" Column="29" TopLine="61"/>
       </Position>
     </JumpHistory>
     <RunParams>

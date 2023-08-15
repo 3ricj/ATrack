@@ -50,9 +50,9 @@ object Main_Form: TMain_Form
     Height = 844
     Top = 0
     Width = 1394
-    ActivePage = TabSheet2
+    ActivePage = TabSheet6
     Align = alClient
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     object TabSheet2: TTabSheet
       Caption = 'Adaptive Tracking'
@@ -2346,36 +2346,36 @@ object Main_Form: TMain_Form
           Left = 816
           Height = 24
           Top = 207
-          Width = 104
+          Width = 120
           Alignment = taCenter
           AutoSize = False
           Color = clBlack
           Font.Color = clLime
           Font.Height = -16
           Font.Name = 'Tahoma'
-          MaxLength = 8
+          MaxLength = 10
           ParentFont = False
           TabOrder = 12
-          EditMask = '#9.99999;1;0'
-          Text = '  .     '
+          EditMask = '#9999.9999;1;0'
+          Text = '     .    '
           SpaceChar = '0'
         end
         object nFiltRA_MaskEdit: TMaskEdit
           Left = 816
           Height = 24
           Top = 166
-          Width = 104
+          Width = 120
           Alignment = taCenter
           AutoSize = False
           Color = clBlack
           Font.Color = clLime
           Font.Height = -16
           Font.Name = 'Tahoma'
-          MaxLength = 8
+          MaxLength = 10
           ParentFont = False
           TabOrder = 13
-          EditMask = '#9.99999;1;0'
-          Text = '  .     '
+          EditMask = '#9999.9999;1;0'
+          Text = '     .    '
           SpaceChar = '0'
         end
       end

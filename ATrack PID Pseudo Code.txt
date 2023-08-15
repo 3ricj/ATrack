@@ -134,7 +134,7 @@ The derivative filtered PID loops are then
 
   RA_filtder = (RA_alpha/(RA_alpha + 1))*(RA_der0 + RA_der1) – ((RA_alpha – 1)/(RA_alpha +1))*RA_der1;
 
-  RA_new_rate_Dfilt :=  RA_Kp *RAp.ImageDriftlNsec + RA_Ki*RAp.ImageShift + RA_filtder;
+  RA_new_rate_Dfilt :=  RA_Kp *RAp.ImageDrift/Nsec + RA_Ki*RAp.ImageShift + RA_filtder;
  
 And
 
